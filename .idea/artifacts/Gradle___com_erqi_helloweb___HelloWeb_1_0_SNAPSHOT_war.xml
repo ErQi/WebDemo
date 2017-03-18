@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : com.erqi.helloweb : HelloWeb-1.0-SNAPSHOT.war">
+    <output-path>$PROJECT_DIR$/HelloWeb/build/libs</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$/HelloWeb" />
+    </properties>
+    <root id="archive" name="HelloWeb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Gradle : com.erqi.helloweb : HelloWeb-1.0-SNAPSHOT.war (exploded)" />
+    </root>
+  </artifact>
+</component>
