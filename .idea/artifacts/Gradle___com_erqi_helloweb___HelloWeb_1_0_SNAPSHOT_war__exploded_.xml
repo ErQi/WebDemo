@@ -2,9 +2,7 @@
   <artifact type="exploded-war" name="Gradle : com.erqi.helloweb : HelloWeb-1.0-SNAPSHOT.war (exploded)">
     <output-path>$PROJECT_DIR$/HelloWeb/build/libs/exploded/HelloWeb-1.0-SNAPSHOT.war</output-path>
     <properties id="gradle-properties">
-      <options external-project-path="$PROJECT_DIR$/HelloWeb">
-        <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
-      </options>
+      <options external-project-path="$PROJECT_DIR$/HelloWeb" />
     </properties>
     <root id="root">
       <element id="directory" name="META-INF">
