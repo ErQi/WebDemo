@@ -33,7 +33,12 @@
           <root url="jar://$MODULE_DIR$/../../HelloWeb/libs/servlet-api.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://F:/apache-tomcat-8.5.12-src/java" />
+          <root url="file://F:/apache-tomcat-8.5.12-src/modules/jdbc-pool/src/main/java" />
+          <root url="file://F:/apache-tomcat-8.5.12-src/modules/jdbc-pool/src/test/java" />
+          <root url="file://F:/apache-tomcat-8.5.12-src/test" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="library" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" level="project" />
@@ -41,5 +46,6 @@
     <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:6.0.6" level="project" />
     <orderEntry type="library" name="Gradle: commons-dbutils:commons-dbutils:1.6" level="project" />
     <orderEntry type="library" name="Gradle: com.mchange:mchange-commons-java:0.2.11" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.12" level="application_server_libraries" />
   </component>
 </module>
