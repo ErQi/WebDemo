@@ -6,7 +6,11 @@
         <webroots>
           <root url="file://$MODULE_DIR$/../../HelloWeb/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/../../HelloWeb/src/main/java" />
+          <root url="file://$MODULE_DIR$/../../HelloWeb/src/main/resources" />
+          <root url="file://$MODULE_DIR$/../../HelloWeb/src/main/groovy" />
+        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -14,13 +18,14 @@
     <output url="file://$MODULE_DIR$/../../HelloWeb/build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../HelloWeb/src/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../HelloWeb/src/main/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../HelloWeb/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../HelloWeb/src/main/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.12" level="application_server_libraries" />
+    <orderEntry type="library" name="Gradle: com.mchange:c3p0:0.9.5.2" level="project" />
+    <orderEntry type="library" name="Gradle: mysql:mysql-connector-java:6.0.6" level="project" />
+    <orderEntry type="library" name="Gradle: com.mchange:mchange-commons-java:0.2.11" level="project" />
   </component>
 </module>

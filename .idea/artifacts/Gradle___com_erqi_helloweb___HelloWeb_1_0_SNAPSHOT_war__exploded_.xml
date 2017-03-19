@@ -2,7 +2,9 @@
   <artifact type="exploded-war" name="Gradle : com.erqi.helloweb : HelloWeb-1.0-SNAPSHOT.war (exploded)">
     <output-path>$PROJECT_DIR$/HelloWeb/build/libs/exploded/HelloWeb-1.0-SNAPSHOT.war</output-path>
     <properties id="gradle-properties">
-      <options external-project-path="$PROJECT_DIR$/HelloWeb" />
+      <options external-project-path="$PROJECT_DIR$/HelloWeb">
+        <manifest>TWFuaWZlc3QtVmVyc2lvbjogMS4wDQoNCg==</manifest>
+      </options>
     </properties>
     <root id="root">
       <element id="directory" name="META-INF">
@@ -15,7 +17,10 @@
           <element id="dir-copy" path="$PROJECT_DIR$/HelloWeb/build/resources/main" />
         </element>
         <element id="directory" name="lib">
-          <element id="file-copy" path="E:/AppData/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-all/2.3.11/f6b34997d04c1538ce451d3955298f46fdb4dbd4/groovy-all-2.3.11.jar" />
+          <element id="library" level="project" name="Gradle: com.mchange:c3p0:0.9.5.2" />
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:6.0.6" />
+          <element id="library" level="project" name="Gradle: com.mchange:mchange-commons-java:0.2.11" />
+          <element id="library" level="project" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" />
         </element>
       </element>
     </root>
