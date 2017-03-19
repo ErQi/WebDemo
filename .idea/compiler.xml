@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="HelloWeb_main" target="1.5" />
       <module name="HelloWeb_test" target="1.5" />
+      <module name="TestGradle_main" target="1.5" />
+      <module name="TestGradle_test" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

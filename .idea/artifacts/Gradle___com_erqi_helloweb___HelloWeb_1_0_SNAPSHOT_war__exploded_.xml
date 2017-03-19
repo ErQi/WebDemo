@@ -17,10 +17,13 @@
           <element id="dir-copy" path="$PROJECT_DIR$/HelloWeb/build/resources/main" />
         </element>
         <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/HelloWeb/libs/jsp-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/HelloWeb/libs/servlet-api.jar" />
+          <element id="library" level="project" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" />
           <element id="library" level="project" name="Gradle: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:6.0.6" />
           <element id="library" level="project" name="Gradle: com.mchange:mchange-commons-java:0.2.11" />
-          <element id="library" level="project" name="Gradle: org.codehaus.groovy:groovy-all:2.3.11" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-dbutils/commons-dbutils/1.6/2912b80af5a30a615d549451de1cf0e00275e49a/commons-dbutils-1.6.jar" />
         </element>
       </element>
     </root>
