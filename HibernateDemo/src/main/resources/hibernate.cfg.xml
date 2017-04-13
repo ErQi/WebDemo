@@ -6,7 +6,7 @@
     <!--一个数据库对应一个session-factory-->
     <session-factory>
         <!--必须配置参数有五个,四大参数和数据库方言-->
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql:///hibernate_day01?serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">0928</property>

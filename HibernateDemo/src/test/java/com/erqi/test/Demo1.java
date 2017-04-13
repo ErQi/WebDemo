@@ -40,8 +40,8 @@ public class Demo1 {
         // 编写保存代码
         Customer customer = new Customer();
         customer.setCust_name("ErQi");
-        customer.setCust_phone("110");
-        customer.setCust_level("3");
+        customer.setCust_phone("119");
+        customer.setCust_level("2");
 
         session.save(customer);
         // 提交事务
