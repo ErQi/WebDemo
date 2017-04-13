@@ -3,17 +3,21 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+    <!--catalog :数据库名称-->
     <class name="com.erqi.domain.Customer" table="cst_customer">
-        <!-- 配置ID
-            name表示JavaBean的属性名,column对应表中列名
-            两者相同,可以省略后者
-        -->
+        <!-- 配置ID-->
         <id name="cust_id" column="cust_id">
-            <!--主键生成策略,本地就是创建时的设定-->
+            <!--主键生成策略,本地就是创建时的设定
+            例如native uuid(随即生成等)-->
             <generator class="native"/>
         </id>
 
-        <property name="cust_name" column="cust_name"/>
+        <!--  name表示JavaBean的属性名,column对应表中列名
+            两者相同,可以省略后者-->
+        <!--length属性,如果没有表,会根据length的长度来生成表结构
+            type属性,在建表的时候根据该属性去建表
+        -->
+        <property name="cust_name" column="cust_name" />
         <property name="cust_user_id" column="cust_user_id"/>
         <property name="cust_create_id" column="cust_create_id"/>
         <property name="cust_source" column="cust_source"/>

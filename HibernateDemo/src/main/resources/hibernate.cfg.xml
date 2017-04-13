@@ -11,10 +11,22 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">0928</property>
 
-            <!-- 数据库方言,不同的数据库对应不同的参数 -->
+        <!-- 数据库方言,不同的数据库对应不同的参数 -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!--可选配置-->
+
+        <!--在控制台显示sql语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化sql语句-->
+        <property name="hibernate.format_sql">true</property>
+        <!--生成数据库的表结构
+            create:每次都删除在创建表
+            create-drop:先删除 后处理,再删除
+            update:不存在就创建,不会删除,若字段不存在,创建字段
+            validate:校验映射是否正确
+        -->
+        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
 
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
         <mapping resource="Customer.hbm.xml"/>
