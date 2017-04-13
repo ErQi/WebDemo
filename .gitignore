@@ -7,3 +7,4 @@ gradle
 .idea/vcs.xml
 .idea/workspace.xml
 HelloWeb/src/test/
+.idea
