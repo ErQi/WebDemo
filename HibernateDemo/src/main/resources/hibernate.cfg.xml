@@ -17,6 +17,6 @@
         <!--可选配置-->
 
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
-        <mapping resource="com.erqi.domain/Customer.hbm.xml"/>
+        <mapping resource="Customer.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
