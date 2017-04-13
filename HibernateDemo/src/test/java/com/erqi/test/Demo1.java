@@ -1,6 +1,7 @@
 package com.erqi.test;
 
 import com.erqi.domain.Customer;
+import com.erqi.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,7 +19,7 @@ public class Demo1 {
      * 测试保存客服
      */
     @Test
-    public void testSave(){
+    public void testSave() {
         /**
          * 测试步骤
          * 1.加载配置文件
@@ -49,10 +50,26 @@ public class Demo1 {
         // 释放资源
         session.close();
         factory.close();
+    }
 
-        /**
-         * 菜鸟的问题
-         * 1.mysql时区问题,在
-         */
+
+    /**
+     * 测试工具类的使用
+     */
+    @Test
+    public void testSave2() {
+        Session session = HibernateUtil.getSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        Customer customer = new Customer();
+        customer.setCust_name("ErLe");
+        customer.setCust_phone("114");
+        customer.setCust_level("5");
+
+        session.save(customer);
+
+        transaction.commit();
+        session.close();
     }
 }
