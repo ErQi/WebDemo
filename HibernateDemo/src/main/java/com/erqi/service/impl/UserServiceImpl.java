@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
      * @param customer 用户
      */
     @Override
-    public void add(Customer customer) {
+    public void add(Customer customer) throws Exception{
         CustomerDao dao = new CustomerDaoImpl();
         dao.add(customer);
     }

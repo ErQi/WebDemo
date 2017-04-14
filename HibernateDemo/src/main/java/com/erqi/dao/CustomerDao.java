@@ -8,5 +8,5 @@ import com.erqi.domain.Customer;
  * 备 注: 用户操作的接口层
  */
 public interface CustomerDao {
-    void add(Customer customer);
+    void add(Customer customer) throws Exception;
 }

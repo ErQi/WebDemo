@@ -13,12 +13,18 @@ import org.hibernate.Session;
 public class CustomerDaoImpl implements CustomerDao {
     /**
      * 将用户添加到数据库
-     * @param customer  添加的用户
+     *
+     * @param customer 添加的用户
      */
     @Override
-    public void add(Customer customer) {
+    public void add(Customer customer) throws Exception {
         Session session = HibernateUtil.getSession();
-        session.save(customer);
-        session.close();
+        try {
+            session.save(customer);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            session.close();
+        }
     }
 }

@@ -8,5 +8,5 @@ import com.erqi.domain.Customer;
  * 备 注: user业务的抽象类
  */
 public interface UserService {
-    void add(Customer customer);
+    void add(Customer customer) throws  Exception;
 }
