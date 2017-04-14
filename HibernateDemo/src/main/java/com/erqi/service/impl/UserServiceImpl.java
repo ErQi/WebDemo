@@ -4,6 +4,9 @@ import com.erqi.dao.CustomerDao;
 import com.erqi.dao.impl.CustomerDaoImpl;
 import com.erqi.domain.Customer;
 import com.erqi.service.UserService;
+import com.erqi.util.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -31,34 +34,52 @@ public class UserServiceImpl implements UserService {
      * @return 返回用户集合
      */
     @Override
-    public List<Customer> queryList() {
+    public List<Customer> queryList() throws Exception {
         CustomerDao dao = new CustomerDaoImpl();
         return dao.queryList();
     }
 
     /**
      * 查找指定用户
-     * @param cust_id 用户ID
+     *
+     * @param cid 用户ID
      */
     @Override
-    public Customer findUser(Long cust_id) {
+    public Customer findUser(Long cid) throws Exception {
         CustomerDao dao = new CustomerDaoImpl();
-        return dao.findUser(cust_id);
+        return dao.findUser(cid);
     }
 
     /**
      * 更新用户信息
-     * @param customer  新的用户信息
+     *
+     * @param customer 新的用户信息
      */
     @Override
     public void update(Customer customer) throws Exception {
         CustomerDao dao = new CustomerDaoImpl();
-        dao.update(customer);
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction tr = session.beginTransaction();
+        try {
+            dao.update(customer);
+            tr.commit();
+        } catch (Exception e) {
+            tr.rollback();
+            throw e;
+        }
     }
 
     @Override
     public void delete(Long cid) throws Exception {
         CustomerDao dao = new CustomerDaoImpl();
-        dao.delete(dao.findUser(cid));
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction tr = session.beginTransaction();
+        try {
+            dao.delete(dao.findUser(cid));
+            tr.commit();
+        } catch (Exception e) {
+            tr.rollback();
+            throw e;
+        }
     }
 }

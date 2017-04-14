@@ -26,4 +26,11 @@ public class HibernateUtils {
     public static Session getSession(){
         return FACTORY.openSession();
     }
+
+    /**
+     * 返回一个绑定到当前线程的Session对象
+     */
+    public static Session getCurrentSession(){
+        return FACTORY.getCurrentSession();
+    }
 }

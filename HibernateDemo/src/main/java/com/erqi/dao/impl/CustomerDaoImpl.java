@@ -4,7 +4,6 @@ import com.erqi.dao.CustomerDao;
 import com.erqi.domain.Customer;
 import com.erqi.util.HibernateUtils;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -23,13 +22,8 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public void add(Customer customer) throws Exception {
         Session session = HibernateUtils.getSession();
-        try {
-            session.save(customer);
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            session.close();
-        }
+        session.save(customer);
+        session.close();
     }
 
     /**
@@ -38,7 +32,7 @@ public class CustomerDaoImpl implements CustomerDao {
      * @return 返回所有用户
      */
     @Override
-    public List<Customer> queryList() {
+    public List<Customer> queryList() throws Exception {
         Session session = HibernateUtils.getSession();
         Query query = session.createQuery("from Customer");
         List<Customer> list = query.list();
@@ -52,7 +46,7 @@ public class CustomerDaoImpl implements CustomerDao {
      * @param cust_id 用户ID
      */
     @Override
-    public Customer findUser(Long cust_id) {
+    public Customer findUser(Long cust_id) throws Exception {
         Session session = HibernateUtils.getSession();
         Customer customer = session.get(Customer.class, cust_id);
         session.close();
@@ -66,18 +60,8 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void update(Customer customer) throws Exception {
-        Session session = HibernateUtils.getSession();
-        Transaction tr = session.beginTransaction();
-        try {
-            session.update(customer);
-            tr.commit();
-        } catch (Exception e) {
-            tr.rollback();
-            e.printStackTrace();
-            throw e;
-        } finally {
-            session.close();
-        }
+        Session session = HibernateUtils.getCurrentSession();
+        session.update(customer);
     }
 
     /**
@@ -87,15 +71,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void delete(Customer customer) throws Exception {
-        Session session = HibernateUtils.getSession();
-        Transaction tr = session.beginTransaction();
-        try {
-            session.delete(customer);
-            tr.commit();
-        } catch (Exception e) {
-            tr.rollback();
-        } finally {
-            session.close();
-        }
+        Session session = HibernateUtils.getCurrentSession();
+        session.delete(customer);
     }
 }

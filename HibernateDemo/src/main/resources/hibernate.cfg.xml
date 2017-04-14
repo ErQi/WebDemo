@@ -28,6 +28,9 @@
         -->
         <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
 
+        <!--绑定Session到当前线程的配置-->
+        <property name="hibernate.current_session_context_class">thread</property>
+
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
         <mapping resource="Customer.hbm.xml"/>
     </session-factory>

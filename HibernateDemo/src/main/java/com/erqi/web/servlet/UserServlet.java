@@ -76,6 +76,7 @@ public class UserServlet extends BaseServlet {
         try {
             BeanUtils.populate(customer, parameterMap);
             UserService service = new UserServiceImpl();
+            System.err.println(customer);
             service.update(customer);
             queryList(request, response);
         } catch (Exception e) {

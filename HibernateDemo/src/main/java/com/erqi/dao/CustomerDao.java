@@ -12,9 +12,9 @@ import java.util.List;
 public interface CustomerDao {
     void add(Customer customer) throws Exception;
 
-    List<Customer> queryList();
+    List<Customer> queryList() throws Exception;
 
-    Customer findUser(Long cust_id);
+    Customer findUser(Long cust_id) throws Exception;
 
     void update(Customer customer) throws  Exception;
 

@@ -68,7 +68,7 @@
 								<td>联系人：</td>
 								<td>
 								<INPUT class=textbox id=sChannel2
-														style="WIDTH: 180px" maxLength=50 name="cust_Linkman" value="${customer.cust_linkman }">
+														style="WIDTH: 180px" maxLength=50 name="cust_linkman" value="${customer.cust_linkman }">
 								</td>
 							</TR>
 							<TR>
