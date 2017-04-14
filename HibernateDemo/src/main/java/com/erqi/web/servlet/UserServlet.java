@@ -19,7 +19,8 @@ import java.util.Map;
  */
 @WebServlet(name = "UserServlet", urlPatterns = {"/UserServlet"})
 public class UserServlet extends BaseServlet {
-    public static final String LIST= "/jsp/customer/list.jsp";
+    public static final String LIST = "/jsp/customer/list.jsp";
+    public static final String EDIT = "/jsp/customer/edit.jsp";
 
     /**
      * 添加用户
@@ -35,7 +36,7 @@ public class UserServlet extends BaseServlet {
             UserService user = new UserServiceImpl();
             user.add(customer);
             request.setAttribute(BaseServlet.MSG, "添加成功");
-            request.getRequestDispatcher(BaseServlet.ERROR).forward(request,response);
+            request.getRequestDispatcher(BaseServlet.ERROR).forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute(BaseServlet.MSG, "添加失败");
@@ -48,10 +49,49 @@ public class UserServlet extends BaseServlet {
      * 查询用户列表
      */
     public void queryList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.err.println("接受请求");
         UserService service = new UserServiceImpl();
         List<Customer> list = service.queryList();
-        request.setAttribute("list",list);
-        request.getRequestDispatcher(LIST).forward(request,response);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher(LIST).forward(request, response);
+    }
+
+    /**
+     * 修改指定用户
+     */
+    public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // 先查询指定用户信息(应该使用缓存数据)
+        Long cust_id = Long.parseLong(request.getParameter("cust_id"));
+        UserService service = new UserServiceImpl();
+        Customer customer = service.findUser(cust_id);
+        request.setAttribute("customer", customer);
+        request.getRequestDispatcher(EDIT).forward(request, response);
+    }
+
+    /**
+     * 保存用户的修改信息
+     */
+    public void editsubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        Customer customer = new Customer();
+        try {
+            BeanUtils.populate(customer, parameterMap);
+            UserService service = new UserServiceImpl();
+            service.update(customer);
+            queryList(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute(MSG, "修改失败");
+            throw e;
+        }
+    }
+
+    /**
+     * 删除指定用户
+     */
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Long cid = Long.parseLong(request.getParameter("cust_id"));
+        UserService service = new UserServiceImpl();
+        service.delete(cid);
+        queryList(request, response);
     }
 }

@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
  * 时 间: 2017.4.13.
  * 备 注: hibernate的简单的工具类
  */
-public class HibernateUtil {
+public class HibernateUtils {
     private static final Configuration CONFIG;
     private static final SessionFactory FACTORY;
 

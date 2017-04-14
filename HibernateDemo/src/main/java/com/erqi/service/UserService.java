@@ -13,4 +13,10 @@ public interface UserService {
     void add(Customer customer) throws  Exception;
 
     List<Customer> queryList();
+
+    Customer findUser(Long cust_id);
+
+    void update(Customer customer) throws Exception;
+
+    void delete(Long cid) throws Exception;
 }

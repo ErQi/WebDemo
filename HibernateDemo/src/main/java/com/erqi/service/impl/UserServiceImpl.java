@@ -35,4 +35,30 @@ public class UserServiceImpl implements UserService {
         CustomerDao dao = new CustomerDaoImpl();
         return dao.queryList();
     }
+
+    /**
+     * 查找指定用户
+     * @param cust_id 用户ID
+     */
+    @Override
+    public Customer findUser(Long cust_id) {
+        CustomerDao dao = new CustomerDaoImpl();
+        return dao.findUser(cust_id);
+    }
+
+    /**
+     * 更新用户信息
+     * @param customer  新的用户信息
+     */
+    @Override
+    public void update(Customer customer) throws Exception {
+        CustomerDao dao = new CustomerDaoImpl();
+        dao.update(customer);
+    }
+
+    @Override
+    public void delete(Long cid) throws Exception {
+        CustomerDao dao = new CustomerDaoImpl();
+        dao.delete(dao.findUser(cid));
+    }
 }

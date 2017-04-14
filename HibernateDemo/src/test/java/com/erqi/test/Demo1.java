@@ -1,7 +1,7 @@
 package com.erqi.test;
 
 import com.erqi.domain.Customer;
-import com.erqi.util.HibernateUtil;
+import com.erqi.util.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -58,7 +58,7 @@ public class Demo1 {
      */
     @Test
     public void testSave2() {
-        Session session = HibernateUtil.getSession();
+        Session session = HibernateUtils.getSession();
 
         Transaction transaction = session.beginTransaction();
 
@@ -70,6 +70,30 @@ public class Demo1 {
         session.save(customer);
 
         transaction.commit();
+        session.close();
+    }
+
+    /**
+     * 测试更新接口是否有效
+     */
+    @Test
+    public void update() {
+        // 原来：加载配置文件，获取Factory对象，获取session
+        Session session = HibernateUtils.getSession();
+        Transaction tr = session.beginTransaction();
+        // 测试查询的方法 2个参数：arg0查询JavaBean的class对象 arg1主键的值
+        Customer c = session.get(Customer.class, 101L);
+
+        // 设置客户的信息
+        c.setCust_name("小苍");
+        c.setCust_level("3");
+
+        // 修改
+        session.update(c);
+
+        // 提交事务
+        tr.commit();
+        // 释放资源
         session.close();
     }
 }

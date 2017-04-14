@@ -13,4 +13,10 @@ public interface CustomerDao {
     void add(Customer customer) throws Exception;
 
     List<Customer> queryList();
+
+    Customer findUser(Long cust_id);
+
+    void update(Customer customer) throws  Exception;
+
+    void delete(Customer customer) throws  Exception;
 }
