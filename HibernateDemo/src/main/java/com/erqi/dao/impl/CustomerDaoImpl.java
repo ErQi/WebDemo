@@ -4,6 +4,9 @@ import com.erqi.dao.CustomerDao;
 import com.erqi.domain.Customer;
 import com.erqi.util.HibernateUtil;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 /**
  * 作 者: ErQi
@@ -26,5 +29,19 @@ public class CustomerDaoImpl implements CustomerDao {
         } finally {
             session.close();
         }
+    }
+
+    /**
+     * 从数据库这个查询所有用户
+     *
+     * @return 返回所有用户
+     */
+    @Override
+    public List<Customer> queryList() {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("from Customer");
+        List<Customer> list = query.list();
+        session.close();
+        return list;
     }
 }

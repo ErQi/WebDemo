@@ -2,6 +2,8 @@ package com.erqi.dao;
 
 import com.erqi.domain.Customer;
 
+import java.util.List;
+
 /**
  * 作 者: ErQi
  * 时 间: 2017.4.14.
@@ -9,4 +11,6 @@ import com.erqi.domain.Customer;
  */
 public interface CustomerDao {
     void add(Customer customer) throws Exception;
+
+    List<Customer> queryList();
 }

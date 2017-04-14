@@ -34,6 +34,7 @@ public class BaseServlet extends HttpServlet {
             // 4.让方法执行 返回值为请求转发的路径
             String s = (String) method.invoke(this, request, response);//相当于 userservlet.add(request,response)
 
+            System.err.println(s);
             // 5.判断s是否为空
             if (s != null) {
                 request.getRequestDispatcher(s).forward(request, response);
