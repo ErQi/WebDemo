@@ -95,4 +95,15 @@ public class UserServlet extends BaseServlet {
         service.delete(cid);
         queryList(request, response);
     }
+
+    /**
+     * 根据指定的关键字进行查找
+     */
+    public void filter(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String filter = request.getParameter("cName");
+        UserService service = new UserServiceImpl();
+        List<Customer> list = service.filterFind(filter);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher(LIST).forward(request, response);
+    }
 }

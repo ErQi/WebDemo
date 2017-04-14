@@ -82,4 +82,10 @@ public class UserServiceImpl implements UserService {
             throw e;
         }
     }
+
+    @Override
+    public List<Customer> filterFind(String filter) throws Exception {
+        CustomerDao dao = new CustomerDaoImpl();
+        return dao.filterFindName(filter);
+    }
 }

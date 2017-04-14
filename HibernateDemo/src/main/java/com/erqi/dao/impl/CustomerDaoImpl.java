@@ -4,6 +4,8 @@ import com.erqi.dao.CustomerDao;
 import com.erqi.domain.Customer;
 import com.erqi.util.HibernateUtils;
 import org.hibernate.Session;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -73,5 +75,22 @@ public class CustomerDaoImpl implements CustomerDao {
     public void delete(Customer customer) throws Exception {
         Session session = HibernateUtils.getCurrentSession();
         session.delete(customer);
+    }
+
+    /**
+     * 根据用户名来查找用户
+     *
+     * @param filter
+     * @return 查找到的用户名
+     */
+    @Override
+    public List<Customer> filterFindName(String filter) throws Exception {
+        Session session = HibernateUtils.getSession();
+        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+        filter = filter.trim();
+        if (filter != null && !filter.isEmpty()) {
+            criteria = criteria.add(Restrictions.like("cust_name", "%" + filter + "%"));
+        }
+        return criteria.getExecutableCriteria(session).list();
     }
 }

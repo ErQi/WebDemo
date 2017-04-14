@@ -19,4 +19,6 @@ public interface UserService {
     void update(Customer customer) throws Exception;
 
     void delete(Long cid) throws Exception;
+
+    List<Customer> filterFind(String filter) throws  Exception;
 }
