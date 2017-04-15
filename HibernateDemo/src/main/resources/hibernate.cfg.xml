@@ -33,5 +33,6 @@
 
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
         <mapping resource="Customer.hbm.xml"/>
+        <mapping resource="Linkman.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
