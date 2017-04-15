@@ -1,6 +1,7 @@
 package com.erqi.dao;
 
 import com.erqi.domain.Customer;
+import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface CustomerDao {
     void delete(Customer customer) throws  Exception;
 
     List<Customer> filterFindName(String filter) throws Exception;
+
+    List<Customer> filterFindName(DetachedCriteria Criterion) throws Exception;
 }

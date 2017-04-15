@@ -5,6 +5,8 @@ import com.erqi.domain.Customer;
 import com.erqi.service.UserService;
 import com.erqi.service.impl.UserServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -102,7 +104,11 @@ public class UserServlet extends BaseServlet {
     public void filter(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String filter = request.getParameter("cName");
         UserService service = new UserServiceImpl();
-        List<Customer> list = service.filterFind(filter);
+        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+        if (filter != null && !filter.trim().isEmpty()) {
+            criteria = criteria.add(Restrictions.like("cust_name", "%" + filter.trim() + "%"));
+        }
+        List<Customer> list = service.filterFind(criteria);
         request.setAttribute("list", list);
         request.getRequestDispatcher(LIST).forward(request, response);
     }

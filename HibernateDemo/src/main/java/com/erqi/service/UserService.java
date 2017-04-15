@@ -1,6 +1,7 @@
 package com.erqi.service;
 
 import com.erqi.domain.Customer;
+import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * 备 注: user业务的抽象类
  */
 public interface UserService {
-    void add(Customer customer) throws  Exception;
+    void add(Customer customer) throws Exception;
 
     List<Customer> queryList() throws Exception;
 
@@ -20,5 +21,7 @@ public interface UserService {
 
     void delete(Long cid) throws Exception;
 
-    List<Customer> filterFind(String filter) throws  Exception;
+    List<Customer> filterFind(String filter) throws Exception;
+
+    List<Customer> filterFind(DetachedCriteria Criterion) throws Exception;
 }

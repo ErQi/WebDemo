@@ -21,16 +21,17 @@ public class HibernateUtils {
 
     /**
      * SessionFactory是重量级的,那么最好将其唯一化.
+     *
      * @return 返回用到的Session对象
      */
-    public static Session getSession(){
+    public static Session getSession() {
         return FACTORY.openSession();
     }
 
     /**
      * 返回一个绑定到当前线程的Session对象
      */
-    public static Session getCurrentSession(){
+    public static Session getCurrentSession() {
         return FACTORY.getCurrentSession();
     }
 }

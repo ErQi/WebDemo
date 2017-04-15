@@ -87,10 +87,20 @@ public class CustomerDaoImpl implements CustomerDao {
     public List<Customer> filterFindName(String filter) throws Exception {
         Session session = HibernateUtils.getSession();
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
-        filter = filter.trim();
-        if (filter != null && !filter.isEmpty()) {
-            criteria = criteria.add(Restrictions.like("cust_name", "%" + filter + "%"));
+        if (filter != null && !filter.trim().isEmpty()) {
+            criteria = criteria.add(Restrictions.like("cust_name", "%" + filter.trim() + "%"));
         }
         return criteria.getExecutableCriteria(session).list();
+    }
+
+    /**
+     * 根据给定的条件进行集合查询
+     *
+     * @param Criterion 具体的条件
+     */
+    @Override
+    public List<Customer> filterFindName(DetachedCriteria Criterion) throws Exception {
+        Session session = HibernateUtils.getSession();
+        return Criterion.getExecutableCriteria(session).list();
     }
 }

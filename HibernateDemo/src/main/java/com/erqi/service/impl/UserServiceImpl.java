@@ -7,6 +7,7 @@ import com.erqi.service.UserService;
 import com.erqi.util.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
 
@@ -87,5 +88,10 @@ public class UserServiceImpl implements UserService {
     public List<Customer> filterFind(String filter) throws Exception {
         CustomerDao dao = new CustomerDaoImpl();
         return dao.filterFindName(filter);
+    }
+
+    @Override
+    public List<Customer> filterFind(DetachedCriteria criterion) throws Exception {
+        return new CustomerDaoImpl().filterFindName(criterion);
     }
 }
