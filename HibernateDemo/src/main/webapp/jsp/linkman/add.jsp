@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 <FORM id=form1 name=form1
-      action="${pageContext.request.contextPath }/linkmanServlet?method=addsubmit"
+      action="${pageContext.request.contextPath }/LinkmanServlet?method=addsubmit"
       method=post>
 
 
