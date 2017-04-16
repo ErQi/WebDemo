@@ -13,5 +13,9 @@ import java.util.List;
 public interface LinkManService {
     void add(Linkman linkman)throws Exception;
 
-    List<Linkman> find(DetachedCriteria criterion);
+    List<Linkman> find(DetachedCriteria criterion) throws Exception;
+
+    void delete(DetachedCriteria criteria) throws Exception;
+
+    void update(Linkman linkman) throws Exception;
 }

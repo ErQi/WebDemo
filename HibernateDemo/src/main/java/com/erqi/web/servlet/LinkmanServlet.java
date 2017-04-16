@@ -28,6 +28,7 @@ import java.util.Map;
 public class LinkmanServlet extends BaseServlet {
     private static final String ADD = "/jsp/linkman/add.jsp;";
     private static final String LIST = "/jsp/linkman/list.jsp;";
+    private static final String EDIT = "/jsp/linkman/edit.jsp;";
 
     /**
      * 查询客户并打开添加联系人页面
@@ -50,19 +51,9 @@ public class LinkmanServlet extends BaseServlet {
         Long cust_id = Long.parseLong(map.get("cust_id")[0]);
         Customer user = new UserServiceImpl().findUser(cust_id);
         linkman.setCustomer(user);
-
-        Session session = HibernateUtils.getCurrentSession();
-        Transaction tr = session.beginTransaction();
-        try {
-            LinkManService service = new LinkManServiceImpl();
-            service.add(linkman);
-            tr.commit();
-            System.err.println("添加成功");
-        } catch (Exception e) {
-            tr.rollback();
-            throw e;
-        }
-//        list(request, response);
+        LinkManService service = new LinkManServiceImpl();
+        service.add(linkman);
+        list(request, response);
     }
 
     /**
@@ -87,5 +78,47 @@ public class LinkmanServlet extends BaseServlet {
         List<Linkman> list = new LinkManServiceImpl().find(criterion);
         request.setAttribute("list", list);
         request.getRequestDispatcher(LIST).forward(request, response);
+    }
+
+    /**
+     * 按照条件修改联系人信息
+     */
+    public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Long lkm_id = Long.parseLong(request.getParameter("lkm_id"));
+        LinkManService service = new LinkManServiceImpl();
+
+        DetachedCriteria criterion = DetachedCriteria.forClass(Linkman.class);
+        Linkman linkman = service.find(criterion.add(Restrictions.eq("lkm_id", lkm_id))).get(0);
+        request.setAttribute("linkman", linkman);
+
+        List<Customer> list = new UserServiceImpl().queryList();
+        request.setAttribute("list", list);
+
+        request.getRequestDispatcher(EDIT).forward(request, response);
+    }
+
+    /**
+     * 按照条件删除联系人信息
+     */
+    public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Long lkm_id = Long.parseLong(request.getParameter("lkm_id"));
+        LinkManService service = new LinkManServiceImpl();
+        service.delete(DetachedCriteria.forClass(Linkman.class).add(Restrictions.eq("lkm_id", lkm_id)));
+        list(request, response);
+    }
+
+    /**
+     * 按照条件修改联系人信息
+     */
+    public void editSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Map<String, String[]> map = request.getParameterMap();
+        Linkman linkman = new Linkman();
+        BeanUtils.populate(linkman, map);
+        Long cust_id = Long.parseLong(String.valueOf(map.get("cust_id")[0]));
+        Customer user = new UserServiceImpl().findUser(cust_id);
+
+        linkman.setCustomer(user);
+        new LinkManServiceImpl().update(linkman);
+        list(request, response);
     }
 }

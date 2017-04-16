@@ -4,6 +4,9 @@ import com.erqi.dao.LinkmanDao;
 import com.erqi.dao.impl.LinkmanDaoImpl;
 import com.erqi.domain.Linkman;
 import com.erqi.service.LinkManService;
+import com.erqi.util.HibernateUtils;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
@@ -19,15 +22,50 @@ public class LinkManServiceImpl implements LinkManService {
      */
     @Override
     public void add(Linkman linkman) throws Exception {
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction tr = session.beginTransaction();
         LinkmanDao dao = new LinkmanDaoImpl();
-        dao.add(linkman);
+        try {
+            dao.add(linkman);
+            tr.commit();
+        } catch (Exception e) {
+            tr.rollback();
+            throw e;
+        }
     }
 
     /**
      * 根据条件去查找返回对象集合
      */
     @Override
-    public List<Linkman> find(DetachedCriteria criterion) {
+    public List<Linkman> find(DetachedCriteria criterion) throws Exception {
         return new LinkmanDaoImpl().find(criterion);
+    }
+
+    @Override
+    public void delete(DetachedCriteria criteria) throws Exception {
+        Linkman linkman = find(criteria).get(0);
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction tr = session.beginTransaction();
+        try {
+            new LinkmanDaoImpl().delete(linkman);
+            tr.commit();
+        } catch (Exception e) {
+            tr.rollback();
+            throw e;
+        }
+    }
+
+    @Override
+    public void update(Linkman linkman) throws Exception {
+        Session session = HibernateUtils.getCurrentSession();
+        Transaction tr = session.beginTransaction();
+        try {
+            new LinkmanDaoImpl().update(linkman);
+            tr.commit();
+        } catch (Exception e) {
+            tr.rollback();
+            throw e;
+        }
     }
 }

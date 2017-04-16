@@ -90,7 +90,9 @@ public class CustomerDaoImpl implements CustomerDao {
         if (filter != null && !filter.trim().isEmpty()) {
             criteria = criteria.add(Restrictions.like("cust_name", "%" + filter.trim() + "%"));
         }
-        return criteria.getExecutableCriteria(session).list();
+        List list = criteria.getExecutableCriteria(session).list();
+        session.close();
+        return list;
     }
 
     /**
@@ -101,6 +103,8 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public List<Customer> filterFindName(DetachedCriteria Criterion) throws Exception {
         Session session = HibernateUtils.getSession();
-        return Criterion.getExecutableCriteria(session).list();
+        List list = Criterion.getExecutableCriteria(session).list();
+        session.close();
+        return list;
     }
 }

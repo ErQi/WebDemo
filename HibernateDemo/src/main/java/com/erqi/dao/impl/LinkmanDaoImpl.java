@@ -18,7 +18,7 @@ public class LinkmanDaoImpl implements LinkmanDao {
      * 操作添加联系人的实现
      */
     @Override
-    public void add(Linkman linkman) {
+    public void add(Linkman linkman) throws Exception {
         Session session = HibernateUtils.getCurrentSession();
         session.save(linkman);
     }
@@ -27,7 +27,25 @@ public class LinkmanDaoImpl implements LinkmanDao {
      * 操作根据条件返回查找对象
      */
     @Override
-    public List<Linkman> find(DetachedCriteria criterion) {
-        return criterion.getExecutableCriteria(HibernateUtils.getSession()).list();
+    public List<Linkman> find(DetachedCriteria criterion) throws Exception {
+        Session session = HibernateUtils.getSession();
+        List list = criterion.getExecutableCriteria(session).list();
+        session.close();
+        return list;
+    }
+
+    /**
+     * 删除指定的联系人
+     */
+    @Override
+    public void delete(Linkman linkman) throws Exception {
+        Session session = HibernateUtils.getCurrentSession();
+        session.delete(linkman);
+    }
+
+    @Override
+    public void update(Linkman linkman) throws Exception {
+        Session session = HibernateUtils.getCurrentSession();
+        session.update(linkman);
     }
 }
