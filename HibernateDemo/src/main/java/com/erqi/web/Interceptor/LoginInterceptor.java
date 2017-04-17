@@ -1,9 +1,9 @@
 package com.erqi.web.Interceptor;
 
 import com.erqi.domain.User;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
-import org.apache.struts2.ServletActionContext;
 
 /**
  * 作 者: ErQi
@@ -14,8 +14,7 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 
     @Override
     protected String doIntercept(ActionInvocation invocation) throws Exception {
-        User user = (User) ServletActionContext.getRequest().getSession().getAttribute("user");
-//        User user = (User) ActionContext.getContext().getSession().get("user");
+        User user = (User) ActionContext.getContext().getSession().get("user");
         if(null!=user){
             System.err.println(user.toString());
             return invocation.invoke();

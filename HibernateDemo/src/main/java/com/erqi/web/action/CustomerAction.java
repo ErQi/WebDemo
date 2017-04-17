@@ -50,7 +50,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查看客户列表
      */
-    @Action(value = "queryList", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
+    @Action(value = "list", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
     public String queryList() throws Exception {
         List<Customer> list = new CustomerServiceImpl().queryList();
         ActionContext.getContext().put("list", list);

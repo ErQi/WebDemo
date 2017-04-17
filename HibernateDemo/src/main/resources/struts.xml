@@ -22,4 +22,6 @@
             <result name="login">/login.htm</result>
         </global-results>
     </package>
+
+    <constant name="struts.serve.static.browserCache" value="false"/>
 </struts>
