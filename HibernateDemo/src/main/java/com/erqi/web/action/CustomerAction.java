@@ -14,11 +14,12 @@ import java.util.List;
 /**
  * 作 者: ErQi
  * 时 间: 2017.4.17.
- * 备 注: TODO
+ * 备 注: 客户操作对象
  */
-@ParentPackage("struts-default")
+@ParentPackage("default")
 @Namespace("/")
 @Results({@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
+@InterceptorRef("loginStack")
 @ExceptionMappings({@ExceptionMapping(exception = "java.lange.RuntimeException", result = "error")})
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
     private Customer mCustomer = new Customer();
