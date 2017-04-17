@@ -1,15 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 build
 gradle
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
 HelloWeb/src/test/
 HelloWeb/.gradle/
 out/
-.idea/libraries/Gradle__commons_dbutils_commons_dbutils_1_6.xml
-.idea/modules/HelloWeb_main.eml
-.idea/modules/HibernateDemo.iml
+.idea
 HibernateDemo/.gradle/
