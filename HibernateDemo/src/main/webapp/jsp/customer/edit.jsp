@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/UserServlet?method=editsubmit"
+		action="${pageContext.request.contextPath }/edit_submit.action"
 		method=post>
 		<input type="hidden" name="cust_id" value="${customer.cust_id }"/>
 

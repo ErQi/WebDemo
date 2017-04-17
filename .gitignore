@@ -6,3 +6,4 @@ HelloWeb/.gradle/
 out/
 .idea
 HibernateDemo/.gradle/
+HibernateDemo/src/test/resources/
