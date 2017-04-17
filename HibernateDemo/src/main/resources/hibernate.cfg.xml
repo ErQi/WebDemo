@@ -32,7 +32,8 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
-        <mapping resource="Customer.hbm.xml"/>
-        <mapping resource="Linkman.hbm.xml"/>
+        <mapping resource="customer.hbm.xml"/>
+        <mapping resource="linkman.hbm.xml"/>
+        <mapping resource="user.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

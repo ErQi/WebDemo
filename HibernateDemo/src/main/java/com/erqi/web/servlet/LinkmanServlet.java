@@ -3,13 +3,10 @@ package com.erqi.web.servlet;
 import com.erqi.domain.Customer;
 import com.erqi.domain.Linkman;
 import com.erqi.service.LinkManService;
-import com.erqi.service.UserService;
+import com.erqi.service.CustomerService;
 import com.erqi.service.impl.LinkManServiceImpl;
-import com.erqi.service.impl.UserServiceImpl;
-import com.erqi.util.HibernateUtils;
+import com.erqi.service.impl.CustomerServiceImpl;
 import org.apache.commons.beanutils.BeanUtils;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -34,7 +31,7 @@ public class LinkmanServlet extends BaseServlet {
      * 查询客户并打开添加联系人页面
      */
     public void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        UserService service = new UserServiceImpl();
+        CustomerService service = new CustomerServiceImpl();
         List<Customer> list = service.queryList();
         request.setAttribute("list", list);
         request.getRequestDispatcher(ADD).forward(request, response);
@@ -49,7 +46,7 @@ public class LinkmanServlet extends BaseServlet {
         BeanUtils.populate(linkman, map);
 
         Long cust_id = Long.parseLong(map.get("cust_id")[0]);
-        Customer user = new UserServiceImpl().findUser(cust_id);
+        Customer user = new CustomerServiceImpl().findUser(cust_id);
         linkman.setCustomer(user);
         LinkManService service = new LinkManServiceImpl();
         service.add(linkman);
@@ -91,7 +88,7 @@ public class LinkmanServlet extends BaseServlet {
         Linkman linkman = service.find(criterion.add(Restrictions.eq("lkm_id", lkm_id))).get(0);
         request.setAttribute("linkman", linkman);
 
-        List<Customer> list = new UserServiceImpl().queryList();
+        List<Customer> list = new CustomerServiceImpl().queryList();
         request.setAttribute("list", list);
 
         request.getRequestDispatcher(EDIT).forward(request, response);
@@ -115,7 +112,7 @@ public class LinkmanServlet extends BaseServlet {
         Linkman linkman = new Linkman();
         BeanUtils.populate(linkman, map);
         Long cust_id = Long.parseLong(String.valueOf(map.get("cust_id")[0]));
-        Customer user = new UserServiceImpl().findUser(cust_id);
+        Customer user = new CustomerServiceImpl().findUser(cust_id);
 
         linkman.setCustomer(user);
         new LinkManServiceImpl().update(linkman);

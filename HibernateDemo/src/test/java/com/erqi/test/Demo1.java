@@ -96,4 +96,9 @@ public class Demo1 {
         // 释放资源
         session.close();
     }
+
+    @Test
+    public void commit(){
+        Session session = HibernateUtils.getSession();
+    }
 }

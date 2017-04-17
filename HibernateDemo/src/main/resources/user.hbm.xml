@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--catalog :数据库名称-->
+    <class name="com.erqi.domain.User" table="sys_user">
+        <!-- 配置ID-->
+        <id name="uid" column="uid">
+            <!--主键生成策略,本地就是创建时的设定
+            例如native uuid(随即生成等)-->
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="name"/>
+        <property name="account" column="account"/>
+        <property name="password" column="password"/>
+
+    </class>
+</hibernate-mapping>
