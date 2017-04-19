@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/add.action"
+		action="${pageContext.request.contextPath }/cust_add.action"
 		method=post>
 		
 

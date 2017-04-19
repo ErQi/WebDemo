@@ -20,7 +20,7 @@ import java.util.List;
 @Namespace("/")
 @Results({@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
 @InterceptorRef("loginStack")
-@ExceptionMappings({@ExceptionMapping(exception = "java.lange.RuntimeException", result = "error")})
+@ExceptionMappings({@ExceptionMapping(exception = "java.lang.RuntimeException", result = "error")})
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
     private Customer mCustomer = new Customer();
     private String cName;
@@ -41,7 +41,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 添加客户到数据库中
      */
-    @Action(value = "add", results = {@Result(name = "list", location = "queryList", type = "chain")})
+    @Action(value = "cust_add", results = {@Result(name = "list", location = "cust_list", type = "chain")})
     public String add() throws Exception {
         new CustomerServiceImpl().add(mCustomer);
         return "list";
@@ -50,7 +50,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查看客户列表
      */
-    @Action(value = "list", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
+    @Action(value = "cust_list", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
     public String queryList() throws Exception {
         List<Customer> list = new CustomerServiceImpl().queryList();
         ActionContext.getContext().put("list", list);
@@ -60,7 +60,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查找指定用户进行修改
      */
-    @Action(value = "edit", results = {@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
+    @Action(value = "cust_edit", results = {@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
     public String find() throws Exception {
         Customer user = new CustomerServiceImpl().findUser(mCustomer.getCust_id());
         ActionContext.getContext().put("customer", user);
@@ -70,7 +70,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 修改指定用户信息
      */
-    @Action(value = "edit_submit", results = {@Result(name = "list", location = "queryList", type = "chain")})
+    @Action(value = "cust_edit_submit", results = {@Result(name = "list", location = "cust_list", type = "chain")})
     public String update() throws Exception {
         new CustomerServiceImpl().update(mCustomer);
         return "list";
@@ -79,7 +79,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 删除指定用户
      */
-    @Action(value = "delete", results = {@Result(name = "list", location = "queryList", type = "chain")})
+    @Action(value = "cust_delete", results = {@Result(name = "list", location = "cust_list", type = "chain")})
     public String delete() throws Exception {
         new CustomerServiceImpl().delete(mCustomer.getCust_id());
         return "list";
@@ -88,7 +88,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查找指定用户名的客户
      */
-    @Action(value = "filter", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
+    @Action(value = "cust_filter", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
     public String filter() throws Exception {
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         if (cName != null && !cName.trim().isEmpty()) {

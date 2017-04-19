@@ -24,7 +24,7 @@
 </HEAD>
 <BODY>
 <FORM id="customerForm" name="customerForm"
-      action="${pageContext.request.contextPath }/filter.action"
+      action="${pageContext.request.contextPath }/cust_filter.action"
       method=post>
 
     <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -99,9 +99,9 @@
                                         <TD>${customer.cust_phone }</TD>
                                         <TD>${customer.cust_mobile }</TD>
                                         <TD>
-                                            <a href="${pageContext.request.contextPath }/edit.action?cust_id=${customer.cust_id}">修改</a>
+                                            <a href="${pageContext.request.contextPath }/cust_edit.action?cust_id=${customer.cust_id}">修改</a>
                                             &nbsp;&nbsp;
-                                            <a href="${pageContext.request.contextPath }/delete.action?cust_id=${customer.cust_id}">删除</a>
+                                            <a href="${pageContext.request.contextPath }/cust_delete.action?cust_id=${customer.cust_id}">删除</a>
                                         </TD>
                                     </TR>
 
