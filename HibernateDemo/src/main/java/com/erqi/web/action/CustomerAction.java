@@ -18,10 +18,12 @@ import java.util.List;
  */
 @ParentPackage("default")
 @Namespace("/")
-@Results({@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
 @InterceptorRef("loginStack")
 @ExceptionMappings({@ExceptionMapping(exception = "java.lang.RuntimeException", result = "error")})
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer> {
+    public static final String LIST = "/jsp/customer/list.jsp";
+    public static final String EDIT = "/jsp/customer/edit.jsp";
+
     private Customer mCustomer = new Customer();
     private String cName;
 
@@ -50,7 +52,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查看客户列表
      */
-    @Action(value = "cust_list", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
+    @Action(value = "cust_list", results = {@Result(name = "list", location = LIST)})
     public String queryList() throws Exception {
         List<Customer> list = new CustomerServiceImpl().queryList();
         ActionContext.getContext().put("list", list);
@@ -60,7 +62,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查找指定用户进行修改
      */
-    @Action(value = "cust_edit", results = {@Result(name = "edit", location = "/jsp/customer/edit.jsp")})
+    @Action(value = "cust_edit", results = {@Result(name = "edit", location = EDIT)})
     public String find() throws Exception {
         Customer user = new CustomerServiceImpl().findUser(mCustomer.getCust_id());
         ActionContext.getContext().put("customer", user);
@@ -88,7 +90,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     /**
      * 查找指定用户名的客户
      */
-    @Action(value = "cust_filter", results = {@Result(name = "list", location = "/jsp/customer/list.jsp")})
+    @Action(value = "cust_filter", results = {@Result(name = "list", location = LIST)})
     public String filter() throws Exception {
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         if (cName != null && !cName.trim().isEmpty()) {

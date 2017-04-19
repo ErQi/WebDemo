@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 <FORM id=form1 name=form1
-      action="${pageContext.request.contextPath }/LinkmanServlet?method=addsubmit"
+      action="${pageContext.request.contextPath }/link_add_submit.action"
       method=post>
 
 
@@ -48,7 +48,7 @@
                 <TABLE cellSpacing=0 cellPadding=5 border=0>
                     <tr>
                         <td>所属客户：</td>
-                        <td colspan="3"><select name="cust_id">
+                        <td colspan="3"><select name="cid">
                             <c:forEach items="${list}" var="customer">
                                 <option value="${customer.cust_id}">${customer.cust_name}</option>
                             </c:forEach>

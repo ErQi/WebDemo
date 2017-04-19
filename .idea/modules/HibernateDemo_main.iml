@@ -27,6 +27,13 @@
         </configuration>
       </facet>
     </facet>
+    <facet type="web" name="Web Gradle : HibernateDemo-1.0-SNAPSHOT.war">
+      <configuration>
+        <webroots>
+          <root url="file://$MODULE_DIR$/../../HibernateDemo/src/main/webapp" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../HibernateDemo/build/classes/main" />

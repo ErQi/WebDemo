@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 <FORM id=form1 name=form1
-      action="${pageContext.request.contextPath }/LinkmanServlet?method=editSubmit"
+      action="${pageContext.request.contextPath }/link_edit_submit.action"
       method=post>
     <input type="hidden" name="lkm_id" value="${linkman.lkm_id }"/>
 
@@ -49,7 +49,7 @@
                     <tr>
                         <td>所属客户：</td>
                         <td colspan="3">
-                            <select name="cust_id">
+                            <select name="cid">
                                 <c:forEach items="${list}" var="customer">
                                     <c:if test="${customer.cust_id == linkman.customer.cust_id}">
                                         <option value="${customer.cust_id}"

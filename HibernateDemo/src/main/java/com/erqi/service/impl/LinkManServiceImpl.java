@@ -42,6 +42,9 @@ public class LinkManServiceImpl implements LinkManService {
         return new LinkmanDaoImpl().find(criterion);
     }
 
+    /**
+     * 删除指定条件用户
+     */
     @Override
     public void delete(DetachedCriteria criteria) throws Exception {
         Linkman linkman = find(criteria).get(0);
@@ -56,6 +59,9 @@ public class LinkManServiceImpl implements LinkManService {
         }
     }
 
+    /**
+     * 更新指定用户信息
+     */
     @Override
     public void update(Linkman linkman) throws Exception {
         Session session = HibernateUtils.getCurrentSession();
