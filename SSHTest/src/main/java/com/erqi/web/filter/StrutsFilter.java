@@ -4,13 +4,12 @@ import org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter;
 
 import javax.servlet.annotation.WebFilter;
 
-
 /**
  * 作 者: ErQi
- * 时 间: 2017.4.17.
- * 备 注: 没有web.xml通过注解配置信息
+ * 时 间: 2017.4.20.
+ * 备 注: 继承struts2的过滤器,用于取代配置文件
  */
-@WebFilter(filterName = "Struts2", urlPatterns = {"/*"})
+@WebFilter(filterName = "struts2" ,urlPatterns = "/*")
 public class StrutsFilter extends StrutsPrepareAndExecuteFilter {
 
 }

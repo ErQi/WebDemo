@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'war'
+apply from: 'config.gradle'
 
 sourceCompatibility = 1.8
 
@@ -15,4 +16,28 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // mysql连接驱动
+    compile group: 'mysql', name: 'mysql-connector-java', version: MYSQL_CONNECTOR_VERSION
+    // 页面标签库
+    compile group: 'javax.servlet.jsp.jstl', name: 'jstl', version: JSTL_VERSION
+    compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: STANDARD_VERSION
+    // log4j日志库
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: LOG4J_CORE_VERSION
+
+    // hibernate整合包的c3p0连接池,包含hibernate的整合包
+    compile group: 'org.hibernate', name: 'hibernate-c3p0', version: HIBERNATE_C3P0_VERSION
+
+    // struts2包,非核心包,因为包含注解
+    compile group: 'org.apache.struts', name: 'struts2-convention-plugin', version: STRUTS2_VERSION
+
+    //  基本的spring包
+    compile group: 'org.springframework', name: 'spring-context', version: SPRING_VERSION
+    // spring AOP切面所需包
+    compile group: 'aopalliance', name: 'aopalliance', version: AOPALLIANCE_VERSION
+    compile group: 'org.springframework', name: 'spring-aspects', version: SPRING_VERSION
+    // spring web整合包
+    compile group: 'org.springframework', name: 'spring-web', version: SPRING_VERSION
+    // spring 的测试包
+    compile group: 'org.springframework', name: 'spring-tx', version: SPRING_VERSION
+
 }
