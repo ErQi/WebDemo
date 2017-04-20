@@ -6,6 +6,8 @@
       <module name="HelloWeb_test" target="1.5" />
       <module name="HibernateDemo_main" target="1.8" />
       <module name="HibernateDemo_test" target="1.8" />
+      <module name="SSHTest_main" target="1.8" />
+      <module name="SSHTest_test" target="1.8" />
       <module name="TestGradle_main" target="1.5" />
       <module name="TestGradle_test" target="1.5" />
     </bytecodeTargetLevel>

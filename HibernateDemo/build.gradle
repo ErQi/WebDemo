@@ -8,6 +8,9 @@ sourceCompatibility = 1.8
 
 repositories {
     jcenter()
+    maven {
+        url "https://artifacts.alfresco.com/nexus/content/repositories/public/"
+    }
 }
 
 dependencies {
@@ -22,4 +25,10 @@ dependencies {
     compile 'commons-beanutils:commons-beanutils-core:1.8.3'
     compile 'commons-logging:commons-logging:1.2'
     compile group: 'org.apache.struts', name: 'struts2-convention-plugin', version: '2.5.10.1'
+    //  基本的spring包
+    compile group: 'org.springframework', name: 'spring-context', version: '5.0.0.M5'
+
+    // AOP切面所需包
+    compile group: 'aopalliance', name: 'aopalliance', version: '1.0'
+    compile group: 'org.springframework', name: 'spring-aspects', version: '5.0.0.M5'
 }

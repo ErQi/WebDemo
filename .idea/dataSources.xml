@@ -15,5 +15,13 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" read-only="true" uuid="bb1f3943-41ba-4b8c-8106-48c1fd967235">
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <configured-by-url>true</configured-by-url>
+      <remarks>$PROJECT_DIR$/HibernateDemo/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
+    </data-source>
   </component>
 </project>
