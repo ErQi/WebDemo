@@ -51,9 +51,14 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
      * 添加客户到数据库中
      */
     @Action(value = "cust_add", results = {@Result(name = "list", location = "cust_list", type = "chain")})
-    public String add() throws Exception {
-        new CustomerServiceImpl().add(mCustomer);
-        return "list";
+    public String add() {
+        try {
+            new CustomerServiceImpl().add(mCustomer);
+            return "list";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ERROR;
+        }
     }
 
     /**

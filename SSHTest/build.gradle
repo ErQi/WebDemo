@@ -19,7 +19,7 @@ dependencies {
     // mysql连接驱动
     compile group: 'mysql', name: 'mysql-connector-java', version: MYSQL_CONNECTOR_VERSION
     // 页面标签库
-    compile group: 'javax.servlet.jsp.jstl', name: 'jstl', version: JSTL_VERSION
+    compile group: 'javax.servlet', name: 'jstl', version: JSTL_VERSION
     compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: STANDARD_VERSION
     // log4j日志库
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: LOG4J_CORE_VERSION
