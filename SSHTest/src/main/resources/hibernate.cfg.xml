@@ -31,7 +31,7 @@
         <!--绑定Session到当前线程的配置-->
         <property name="hibernate.current_session_context_class">thread</property>
         <!--配置连接池-->
-        <property name="connection.driver_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <!--<property name="connection.driver_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>-->
 
         <!--&lt;!&ndash;映射配置&ndash;&gt;-->
         <!--<mapping resource="customer.hbm.xml"/>-->

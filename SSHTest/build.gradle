@@ -29,6 +29,8 @@ dependencies {
 
     // struts2包,非核心包,因为包含注解
     compile group: 'org.apache.struts', name: 'struts2-convention-plugin', version: STRUTS2_VERSION
+    // struts2和spring整合包,包含了spring的基本包,包含了web整合包
+    compile group: 'org.apache.struts', name: 'struts2-spring-plugin', version: STRUTS2_VERSION
 
     //  基本的spring包
     compile group: 'org.springframework', name: 'spring-context', version: SPRING_VERSION

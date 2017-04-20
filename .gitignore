@@ -2,8 +2,7 @@
 build
 gradle
 HelloWeb/src/test/
-HelloWeb/.gradle/
 out/
 .idea
-HibernateDemo/.gradle/
 HibernateDemo/src/test/resources/
+.gradle
