@@ -12,15 +12,46 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	<bean id="customerService" class="com.erqi.service.impl.CustomerServiceImpl">
-		<property name="customerDao" ref="customerDao"/>
-	</bean>
-	<bean id="customerAction" class="com.erqi.web.action.CustomerAction" scope="prototype">
-		<property name="customerService" ref="customerService"/>
-	</bean>
 
-	<bean id="customerDao" class="com.erqi.dao.impl.CustomerDaoImpl"/>
+	<!--整合hibernate-->
+    <!--配置连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql:///hibernate_day01?serverTimezone=UTC"/>
+        <property name="user" value="root"/>
+        <property name="password" value="0928"/>
+    </bean>
+    <!--引入hibernate的配置,以及注入连接池-->
+    <bean id="sessionFactoryBean" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--注入连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--引入hibernate配置-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+    <!--session事务控制-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryBean"/>
+    </bean>
+
+
+    <!--整合struts2-->
+    <bean id="customerAction" class="com.erqi.web.action.CustomerAction" scope="prototype">
+        <property name="customerService" ref="customerService"/>
+    </bean>
+
+    <bean id="customerService" class="com.erqi.service.impl.CustomerServiceImpl">
+        <property name="customerDao" ref="customerDao"/>
+    </bean>
+	<bean id="customerDao" class="com.erqi.dao.impl.CustomerDaoImpl" scope="prototype"/>
+
+	<bean id="linkmanDaoImpl" class="com.erqi.dao.impl.LinkmanDaoImpl" scope="prototype"/>
 </beans>
 
 

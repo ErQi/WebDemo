@@ -18,7 +18,7 @@
         <!--全局跳转配置-->
         <global-results>
             <result name="error">/jsp/error.jsp</result>
-            <result name="login">/login.htm</result>
+            <result name="login">/login.jsp </result>
         </global-results>
     </package>
 

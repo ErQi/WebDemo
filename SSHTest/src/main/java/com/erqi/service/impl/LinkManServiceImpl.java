@@ -17,6 +17,12 @@ import java.util.List;
  * 备 注: 联系人的操作实现类
  */
 public class LinkManServiceImpl implements LinkManService {
+    private LinkmanDao linkmanDao;
+
+    public void setLinkmanDao(LinkmanDao linkmanDao) {
+        this.linkmanDao = linkmanDao;
+    }
+
     /**
      * 将联系人添加到数据库
      */
@@ -24,9 +30,8 @@ public class LinkManServiceImpl implements LinkManService {
     public void add(Linkman linkman) throws Exception {
         Session session = HibernateUtils.getCurrentSession();
         Transaction tr = session.beginTransaction();
-        LinkmanDao dao = new LinkmanDaoImpl();
         try {
-            dao.add(linkman);
+            linkmanDao.add(linkman);
             tr.commit();
         } catch (Exception e) {
             tr.rollback();
@@ -51,7 +56,7 @@ public class LinkManServiceImpl implements LinkManService {
         Session session = HibernateUtils.getCurrentSession();
         Transaction tr = session.beginTransaction();
         try {
-            new LinkmanDaoImpl().delete(linkman);
+            linkmanDao.delete(linkman);
             tr.commit();
         } catch (Exception e) {
             tr.rollback();
@@ -67,7 +72,7 @@ public class LinkManServiceImpl implements LinkManService {
         Session session = HibernateUtils.getCurrentSession();
         Transaction tr = session.beginTransaction();
         try {
-            new LinkmanDaoImpl().update(linkman);
+            linkmanDao.update(linkman);
             tr.commit();
         } catch (Exception e) {
             tr.rollback();

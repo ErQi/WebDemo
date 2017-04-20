@@ -24,7 +24,7 @@ dependencies {
     // log4j日志库
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: LOG4J_CORE_VERSION
 
-    // hibernate整合包的c3p0连接池,包含hibernate的整合包
+    // hibernate整合包的c3p0连接池,包含hibernate的整合包 是否需要c3p0?
     compile group: 'org.hibernate', name: 'hibernate-c3p0', version: HIBERNATE_C3P0_VERSION
 
     // struts2包,非核心包,因为包含注解
@@ -39,7 +39,11 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-aspects', version: SPRING_VERSION
     // spring web整合包
     compile group: 'org.springframework', name: 'spring-web', version: SPRING_VERSION
-    // spring 的测试包
+    // 事务包,整合hibernate所需
+    compile group: 'org.springframework', name: 'spring-jdbc', version: SPRING_VERSION
+    // spring 的测试包 JDBC包已经依赖整合
     compile group: 'org.springframework', name: 'spring-tx', version: SPRING_VERSION
+    // spring 整合 hibernate orm操作包
+    compile group: 'org.springframework', name: 'spring-orm', version: SPRING_VERSION
 
 }

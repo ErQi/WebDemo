@@ -1,5 +1,8 @@
 package com.erqi.domain;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  * 作 者: ErQi
  * 时 间: 2017.4.15.
@@ -33,6 +36,8 @@ public class Linkman {
     private String lkm_qq;
     private String lkm_position;
     private String lkm_memo;
+    @ManyToOne
+    @JoinColumn(name = "lkm_cust_id")
     private Customer customer;
 
     public Long getLkm_id() {
