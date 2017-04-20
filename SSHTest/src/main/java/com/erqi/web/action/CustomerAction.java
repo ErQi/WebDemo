@@ -2,7 +2,6 @@ package com.erqi.web.action;
 
 import com.erqi.domain.Customer;
 import com.erqi.service.CustomerService;
-import com.erqi.service.impl.CustomerServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -53,7 +52,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
     @Action(value = "cust_add", results = {@Result(name = "list", location = "cust_list", type = "chain")})
     public String add() {
         try {
-            new CustomerServiceImpl().add(mCustomer);
+            customerService.add(mCustomer);
             return "list";
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,51 +64,79 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
      * 查看客户列表
      */
     @Action(value = "cust_list", results = {@Result(name = "list", location = LIST)})
-    public String queryList() throws Exception {
-        List<Customer> list = new CustomerServiceImpl().queryList();
-        ActionContext.getContext().put("list", list);
-        return "list";
+    public String queryList() {
+        List<Customer> list = null;
+        try {
+            list = customerService.queryList();
+            ActionContext.getContext().put("list", list);
+            return "list";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ERROR;
     }
 
     /**
      * 查找指定用户进行修改
      */
     @Action(value = "cust_edit", results = {@Result(name = "edit", location = EDIT)})
-    public String find() throws Exception {
-        Customer user = customerService.findUser(mCustomer.getCust_id());
-        ActionContext.getContext().put("customer", user);
-        return "edit";
+    public String find() {
+        Customer user = null;
+        try {
+            user = customerService.findUser(mCustomer.getCust_id());
+            ActionContext.getContext().put("customer", user);
+            return "edit";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ERROR;
     }
 
     /**
      * 修改指定用户信息
      */
     @Action(value = "cust_edit_submit", results = {@Result(name = "list", location = "cust_list", type = "chain")})
-    public String update() throws Exception {
-        customerService.update(mCustomer);
-        return "list";
+    public String update() {
+        try {
+            customerService.update(mCustomer);
+            return "list";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ERROR;
     }
 
     /**
      * 删除指定用户
      */
     @Action(value = "cust_delete", results = {@Result(name = "list", location = "cust_list", type = "chain")})
-    public String delete() throws Exception {
-        customerService.delete(mCustomer.getCust_id());
-        return "list";
+    public String delete() {
+        try {
+            customerService.delete(mCustomer.getCust_id());
+            return "list";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ERROR;
     }
 
     /**
      * 查找指定用户名的客户
      */
     @Action(value = "cust_filter", results = {@Result(name = "list", location = LIST)})
-    public String filter() throws Exception {
-        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
-        if (cName != null && !cName.trim().isEmpty()) {
-            criteria = criteria.add(Restrictions.like("cust_name", "%" + cName.trim() + "%"));
+    public String filter() {
+        try {
+            DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+            if (cName != null && !cName.trim().isEmpty()) {
+                criteria = criteria.add(Restrictions.like("cust_name", "%" + cName.trim() + "%"));
+            }
+            List<Customer> list = null;
+            list = customerService.filterFind(criteria);
+            ActionContext.getContext().put("list", list);
+            return "list";
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        List<Customer> list = customerService.filterFind(criteria);
-        ActionContext.getContext().put("list", list);
-        return "list";
+        return ERROR;
     }
 }

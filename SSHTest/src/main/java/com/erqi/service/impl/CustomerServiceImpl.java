@@ -1,12 +1,8 @@
 package com.erqi.service.impl;
 
 import com.erqi.dao.CustomerDao;
-import com.erqi.dao.impl.CustomerDaoImpl;
 import com.erqi.domain.Customer;
 import com.erqi.service.CustomerService;
-import com.erqi.util.HibernateUtils;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
 
 import java.util.List;
@@ -21,6 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     public void setCustomerDao(CustomerDao customerDao) {
         this.customerDao = customerDao;
+        System.err.println("注入成功  CustomerServiceImpl.java:29");
     }
 
     /**
@@ -30,8 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public void add(Customer customer) throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        dao.add(customer);
+        customerDao.add(customer);
     }
 
     /**
@@ -41,8 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public List<Customer> queryList() throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        return dao.queryList();
+        return customerDao.queryList();
     }
 
     /**
@@ -52,8 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public Customer findUser(Long cid) throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        return dao.findUser(cid);
+        return customerDao.findUser(cid);
     }
 
     /**
@@ -63,40 +57,21 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public void update(Customer customer) throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        Session session = HibernateUtils.getCurrentSession();
-        Transaction tr = session.beginTransaction();
-        try {
-            dao.update(customer);
-            tr.commit();
-        } catch (Exception e) {
-            tr.rollback();
-            throw e;
-        }
+        customerDao.update(customer);
     }
 
     @Override
     public void delete(Long cid) throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        Session session = HibernateUtils.getCurrentSession();
-        Transaction tr = session.beginTransaction();
-        try {
-            dao.delete(dao.findUser(cid));
-            tr.commit();
-        } catch (Exception e) {
-            tr.rollback();
-            throw e;
-        }
+        customerDao.delete(customerDao.findUser(cid));
     }
 
     @Override
     public List<Customer> filterFind(String filter) throws Exception {
-        CustomerDao dao = new CustomerDaoImpl();
-        return dao.filterFindName(filter);
+        return customerDao.filterFindName(filter);
     }
 
     @Override
     public List<Customer> filterFind(DetachedCriteria criterion) throws Exception {
-        return new CustomerDaoImpl().filterFindName(criterion);
+        return customerDao.filterFindName(criterion);
     }
 }

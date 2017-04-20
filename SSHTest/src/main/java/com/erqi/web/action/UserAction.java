@@ -2,7 +2,6 @@ package com.erqi.web.action;
 
 import com.erqi.domain.User;
 import com.erqi.service.UserService;
-import com.erqi.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -19,8 +18,12 @@ import org.apache.struts2.convention.annotation.*;
         @Result(name = "error", location = "/error.htm")})
 @ExceptionMappings({@ExceptionMapping(exception = "java.lange.RuntimeException", result = "error")})
 public class UserAction extends ActionSupport implements ModelDriven<User> {
-
+    private UserService userService;
     private User mUser = new User();
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public User getModel() {
@@ -28,10 +31,15 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
     }
 
     @Action(value = "login")
-    public String login() throws Exception {
-        UserService service = new UserServiceImpl();
-        User login = service.login(mUser);
-        ActionContext.getContext().getSession().put("user",login);
-        return null == login ? ERROR : SUCCESS;
+    public String login() {
+        try {
+            User login = null;
+            login = userService.login(mUser);
+            ActionContext.getContext().getSession().put("user", login);
+            return null == login ? ERROR : SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ERROR;
     }
 }

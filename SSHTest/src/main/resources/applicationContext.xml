@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
@@ -13,7 +13,7 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<!--整合hibernate-->
+    <!--整合hibernate-->
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
@@ -34,24 +34,54 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
+        <!--映射配置-->
+        <property name="mappingResources">
+            <list>
+                <value>user.hbm.xml</value>
+                <value>linkman.hbm.xml</value>
+                <value>customer.hbm.xml</value>
+            </list>
+        </property>
     </bean>
     <!--session事务控制-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactoryBean"/>
     </bean>
 
+    <!-- 开启事务的注解 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--整合struts2-->
     <bean id="customerAction" class="com.erqi.web.action.CustomerAction" scope="prototype">
         <property name="customerService" ref="customerService"/>
     </bean>
-
     <bean id="customerService" class="com.erqi.service.impl.CustomerServiceImpl">
         <property name="customerDao" ref="customerDao"/>
     </bean>
-	<bean id="customerDao" class="com.erqi.dao.impl.CustomerDaoImpl" scope="prototype"/>
+    <bean id="customerDao" class="com.erqi.dao.impl.CustomerDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryBean"/>
+    </bean>
 
-	<bean id="linkmanDaoImpl" class="com.erqi.dao.impl.LinkmanDaoImpl" scope="prototype"/>
+    <bean class="com.erqi.web.action.LinkmanAction" id="linkman">
+        <property name="customerService" ref="customerService"/>
+        <property name="linkManService" ref="linkManService"/>
+    </bean>
+    <bean class="com.erqi.service.impl.LinkManServiceImpl" id="linkManService">
+        <property name="linkmanDao" ref="linkmanDao"/>
+    </bean>
+    <bean id="linkmanDao" class="com.erqi.dao.impl.LinkmanDaoImpl">
+        <property name="sessionFactory" ref="sessionFactoryBean"/>
+    </bean>
+
+    <bean class="com.erqi.web.action.UserAction" id="user">
+        <property name="userService" ref="userService"/>
+    </bean>
+    <bean class="com.erqi.service.impl.UserServiceImpl" id="userService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean class="com.erqi.dao.impl.UserDaoImpl" id="userDao">
+        <property name="sessionFactory" ref="sessionFactoryBean"/>
+    </bean>
 </beans>
 
 

@@ -2,11 +2,10 @@ package com.erqi.dao.impl;
 
 import com.erqi.dao.CustomerDao;
 import com.erqi.domain.Customer;
-import com.erqi.util.HibernateUtils;
-import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.query.Query;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,7 +14,8 @@ import java.util.List;
  * 时 间: 2017.4.14.
  * 备 注: 用户操作的实现层
  */
-public class CustomerDaoImpl implements CustomerDao {
+@Transactional
+public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
     /**
      * 将用户添加到数据库
      *
@@ -23,9 +23,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void add(Customer customer) throws Exception {
-        Session session = HibernateUtils.getSession();
-        session.save(customer);
-        session.close();
+        getHibernateTemplate().save(customer);
     }
 
     /**
@@ -35,11 +33,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public List<Customer> queryList() throws Exception {
-        Session session = HibernateUtils.getSession();
-        Query query = session.createQuery("from Customer");
-        List<Customer> list = query.list();
-        session.close();
-        return list;
+        return (List<Customer>) getHibernateTemplate().find("from Customer");
     }
 
     /**
@@ -49,10 +43,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public Customer findUser(Long cust_id) throws Exception {
-        Session session = HibernateUtils.getSession();
-        Customer customer = session.get(Customer.class, cust_id);
-        session.close();
-        return customer;
+        return getHibernateTemplate().get(Customer.class, cust_id);
     }
 
     /**
@@ -62,8 +53,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void update(Customer customer) throws Exception {
-        Session session = HibernateUtils.getCurrentSession();
-        session.update(customer);
+        getHibernateTemplate().update(customer);
     }
 
     /**
@@ -73,8 +63,7 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public void delete(Customer customer) throws Exception {
-        Session session = HibernateUtils.getCurrentSession();
-        session.delete(customer);
+        getHibernateTemplate().delete(customer);
     }
 
     /**
@@ -85,14 +74,11 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public List<Customer> filterFindName(String filter) throws Exception {
-        Session session = HibernateUtils.getSession();
         DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
         if (filter != null && !filter.trim().isEmpty()) {
             criteria = criteria.add(Restrictions.like("cust_name", "%" + filter.trim() + "%"));
         }
-        List list = criteria.getExecutableCriteria(session).list();
-        session.close();
-        return list;
+        return (List<Customer>) getHibernateTemplate().findByCriteria(criteria);
     }
 
     /**
@@ -102,9 +88,6 @@ public class CustomerDaoImpl implements CustomerDao {
      */
     @Override
     public List<Customer> filterFindName(DetachedCriteria Criterion) throws Exception {
-        Session session = HibernateUtils.getSession();
-        List list = Criterion.getExecutableCriteria(session).list();
-        session.close();
-        return list;
+        return (List<Customer>) getHibernateTemplate().findByCriteria(Criterion);
     }
 }

@@ -2,9 +2,9 @@ package com.erqi.dao.impl;
 
 import com.erqi.dao.LinkmanDao;
 import com.erqi.domain.Linkman;
-import com.erqi.util.HibernateUtils;
-import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,14 +13,14 @@ import java.util.List;
  * 时 间: 2017.4.16.
  * 备 注: 联系人操作的实现类
  */
-public class LinkmanDaoImpl implements LinkmanDao {
+@Transactional
+public class LinkmanDaoImpl extends HibernateDaoSupport implements LinkmanDao {
     /**
      * 操作添加联系人的实现
      */
     @Override
     public void add(Linkman linkman) throws Exception {
-        Session session = HibernateUtils.getCurrentSession();
-        session.save(linkman);
+        getHibernateTemplate().save(linkman);
     }
 
     /**
@@ -28,10 +28,7 @@ public class LinkmanDaoImpl implements LinkmanDao {
      */
     @Override
     public List<Linkman> find(DetachedCriteria criterion) throws Exception {
-        Session session = HibernateUtils.getSession();
-        List list = criterion.getExecutableCriteria(session).list();
-        session.close();
-        return list;
+        return (List<Linkman>) getHibernateTemplate().findByCriteria(criterion);
     }
 
     /**
@@ -39,13 +36,11 @@ public class LinkmanDaoImpl implements LinkmanDao {
      */
     @Override
     public void delete(Linkman linkman) throws Exception {
-        Session session = HibernateUtils.getCurrentSession();
-        session.delete(linkman);
+        getHibernateTemplate().delete(linkman);
     }
 
     @Override
     public void update(Linkman linkman) throws Exception {
-        Session session = HibernateUtils.getCurrentSession();
-        session.update(linkman);
+       getHibernateTemplate().update(linkman);
     }
 }
