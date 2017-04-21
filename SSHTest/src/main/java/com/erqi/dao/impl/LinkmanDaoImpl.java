@@ -13,7 +13,6 @@ import java.util.List;
  * 时 间: 2017.4.16.
  * 备 注: 联系人操作的实现类
  */
-@Transactional
 public class LinkmanDaoImpl extends HibernateDaoSupport implements LinkmanDao {
     /**
      * 操作添加联系人的实现

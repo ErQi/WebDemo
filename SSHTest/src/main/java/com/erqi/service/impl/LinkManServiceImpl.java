@@ -4,6 +4,7 @@ import com.erqi.dao.LinkmanDao;
 import com.erqi.domain.Linkman;
 import com.erqi.service.LinkManService;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * 时 间: 2017.4.16.
  * 备 注: 联系人的操作实现类
  */
+@Transactional
 public class LinkManServiceImpl implements LinkManService {
     private LinkmanDao linkmanDao;
 

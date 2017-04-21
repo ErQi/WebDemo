@@ -14,7 +14,6 @@ import java.util.List;
  * 时 间: 2017.4.17.
  * 备 注: User操作实现类
  */
-@Transactional
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     /**
      * 根据用户登陆信息去查找用户数据

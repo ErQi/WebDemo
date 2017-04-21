@@ -46,5 +46,5 @@ dependencies {
     // spring 整合 hibernate orm操作包
     compile group: 'org.springframework', name: 'spring-orm', version: SPRING_VERSION
     // spring Test测试包
-    compile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
+    compile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION  
 }

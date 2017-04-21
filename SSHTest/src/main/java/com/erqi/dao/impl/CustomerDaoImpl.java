@@ -14,7 +14,6 @@ import java.util.List;
  * 时 间: 2017.4.14.
  * 备 注: 用户操作的实现层
  */
-@Transactional
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
     /**
      * 将用户添加到数据库

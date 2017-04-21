@@ -4,6 +4,7 @@ import com.erqi.dao.CustomerDao;
 import com.erqi.domain.Customer;
 import com.erqi.service.CustomerService;
 import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * 时 间: 2017.4.14.
  * 备 注: user业务的实现类
  */
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
     private CustomerDao customerDao;
 
