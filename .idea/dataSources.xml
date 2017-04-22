@@ -18,13 +18,5 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="92c7a5bb-4531-4c6e-b05d-31e6dfd99cfd">
-      <driver-ref>d974dbde-6712-4034-8ac0-1520c4b8c4f0</driver-ref>
-      <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
-      <remarks>$PROJECT_DIR$/HibernateDemo/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
-    </data-source>
   </component>
 </project>
