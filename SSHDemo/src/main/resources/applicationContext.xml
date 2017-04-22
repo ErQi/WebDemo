@@ -51,7 +51,7 @@
     <bean class="com.erqi.service.impl.UserServiceImpl" name="userService">
         <property name="userDao" ref="userDao"/>
     </bean>
-    <bean class="com.erqi.web.action.UserAction" name="userAction">
+    <bean class="com.erqi.web.action.UserAction" name="userAction" scope="prototype">
         <property name="userService" ref="userService"/>
     </bean>
 
@@ -61,7 +61,7 @@
     <bean class="com.erqi.service.impl.CustomerServiceImpl" name="customerService">
         <property name="customerDao" ref="customerDao"/>
     </bean>
-    <bean class="com.erqi.web.action.CustomerAction" name="action">
+    <bean class="com.erqi.web.action.CustomerAction" name="action" scope="prototype">
         <property name="customerService" ref="customerService"/>
     </bean>
 </beans>

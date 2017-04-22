@@ -48,4 +48,5 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-orm', version: SPRING_VERSION
     // spring Test测试包
     compile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
+    compile group: 'com.alibaba', name: 'fastjson', version: FASTJSON_VERSION
 }
