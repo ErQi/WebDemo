@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Hibernate" uuid="5fa8ec49-c309-4049-bf7a-0f541d864f7e">
-      <driver-ref>83e64580-2df1-48be-a1e6-cdf637f862a7</driver-ref>
-      <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
-      <remarks>$PROJECT_DIR$/HibernateDemo/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
-    </data-source>
     <data-source source="LOCAL" name="SSH" uuid="b495a954-b737-408c-bc82-ae3a07455dec">
       <driver-ref>83e64580-2df1-48be-a1e6-cdf637f862a7</driver-ref>
       <synchronize>true</synchronize>
@@ -16,7 +8,23 @@
       <configured-by-url>true</configured-by-url>
       <remarks>$PROJECT_DIR$/SSHTest/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql:///ssh_demo?serverTimezone=UTC</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="dataSource" uuid="da39e262-8e74-4668-8639-64711a9c62d9">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/SSHTest/src/main/resources/applicationContext.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

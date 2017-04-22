@@ -11,3 +11,9 @@
 ----------
 ## 修改idea默认用户名 ##
 在安装目录的bin目录下找到`idea.exe.vmoptions`,注意区分32位和64位,然后在末尾加上`-Duser.name=用户名`即可
+
+----------
+## 修改idea运行内存 ##
+- idea.exe.vmoptions
+	- -Xms128m: 	运行初始内存
+	- -Xmx4096m: 	运行最大内存

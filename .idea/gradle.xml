@@ -26,6 +26,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/SSHDemo" />
         <option name="gradleJvm" value="1.8" />
@@ -42,19 +43,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/SSHTest" />
-          </set>
-        </option>
-        <option name="useAutoImport" value="true" />
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="createEmptyContentRootDirectories" value="true" />
-        <option name="disableWrapperSourceDistributionNotification" value="true" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/com.erqi" />
-        <option name="gradleJvm" value="1.8" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/com.erqi" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
