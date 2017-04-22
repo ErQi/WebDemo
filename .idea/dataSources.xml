@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="SSH" uuid="b495a954-b737-408c-bc82-ae3a07455dec">
-      <driver-ref>83e64580-2df1-48be-a1e6-cdf637f862a7</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <configured-by-url>true</configured-by-url>
-      <remarks>$PROJECT_DIR$/SSHTest/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql:///ssh_demo?serverTimezone=UTC</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="dataSource" uuid="da39e262-8e74-4668-8639-64711a9c62d9">
+    <data-source source="LOCAL" name="dataSource" uuid="64d0e061-cf70-4557-acf8-ce73f3bcdd6c">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>$PROJECT_DIR$/SSHTest/src/main/resources/applicationContext.xml</remarks>
+      <remarks>$PROJECT_DIR$/SSHDemo/src/main/resources/applicationContext.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql:///hibernate_day01?serverTimezone=UTC</jdbc-url>
+      <jdbc-url>jdbc:mysql:///ssh_demo?serverTimezone=UTC</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
