@@ -75,7 +75,7 @@
 		 * 执行者:服务器
 		 * 执行次数:一次
 		 * 执行时机:默认第一次访问的时候
- 	- void service(ServletRequest request,ServletResponse response):服务 处理业务逻辑
+ 	- void customerService(ServletRequest request,ServletResponse response):服务 处理业务逻辑
 		 * 服务
 		 * 执行者:服务器
 		 * 执行次数:请求一次执行一次

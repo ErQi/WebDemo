@@ -55,7 +55,7 @@
     <bean id="customerAction" class="com.erqi.web.action.CustomerAction" scope="prototype">
         <property name="customerService" ref="customerService"/>
     </bean>
-    <bean id="customerService" class="com.erqi.service.impl.CustomerServiceImpl">
+    <bean id="customerService" class="com.erqi.customerService.impl.CustomerServiceImpl">
         <property name="customerDao" ref="customerDao"/>
     </bean>
     <bean id="customerDao" class="com.erqi.dao.impl.CustomerDaoImpl">
@@ -66,7 +66,7 @@
         <property name="customerService" ref="customerService"/>
         <property name="linkManService" ref="linkManService"/>
     </bean>
-    <bean class="com.erqi.service.impl.LinkManServiceImpl" id="linkManService">
+    <bean class="com.erqi.customerService.impl.LinkManServiceImpl" id="linkManService">
         <property name="linkmanDao" ref="linkmanDao"/>
     </bean>
     <bean id="linkmanDao" class="com.erqi.dao.impl.LinkmanDaoImpl">
@@ -76,7 +76,7 @@
     <bean class="com.erqi.web.action.UserAction" id="user">
         <property name="userService" ref="userService"/>
     </bean>
-    <bean class="com.erqi.service.impl.UserServiceImpl" id="userService">
+    <bean class="com.erqi.customerService.impl.UserServiceImpl" id="userService">
         <property name="userDao" ref="userDao"/>
     </bean>
     <bean class="com.erqi.dao.impl.UserDaoImpl" id="userDao">

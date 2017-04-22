@@ -130,12 +130,12 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="customerServlet?method=add" 
-														target=main>－ 新增客户</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/jsp/customer/add.jsp"
+														target=main>－新增客户</A></TD>
 												</TR>
 												<TR> 
-													<TD class=menuSmall><A class=style2 href="customerServlet?method=list"
-														target=main>－ 客户列表</A></TD>
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/customer_find_page.action"
+														target=main>－客户列表</A></TD>
 												</TR>
 												
 											</TBODY>
@@ -156,7 +156,7 @@ A.active {
 											<TBODY>
 												<TR>
 													<TD class=menuSmall><A class=style2 href="linkmanServlet?method=add"
-														target=main>－ 新增联系人</A></TD>
+														target=main>－新增联系人</A></TD>
 												</TR>
 												<TR>
 													<TD class=menuSmall><A class=style2 href="linkmanServlet?method=list"

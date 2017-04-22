@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.erqi.domain.Customer" table="cst_customer">
+        <id name="cust_id">
+            <generator class="native"/>
+        </id>
+
+        <property name="cust_name"/>
+        <property name="cust_user_id"/>
+        <property name="cust_create_id"/>
+        <property name="cust_linkman"/>
+        <property name="cust_phone"/>
+        <property name="cust_mobile"/>
+
+        <many-to-one name="industry" column="cust_industry" class="com.erqi.domain.Dict"/>
+        <many-to-one name="source" column="cust_source" class="com.erqi.domain.Dict"/>
+        <many-to-one name="level" column="cust_level" class="com.erqi.domain.Dict"/>
+    </class>
+</hibernate-mapping>
