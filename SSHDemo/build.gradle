@@ -1,0 +1,50 @@
+group 'com.erqi'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply from: 'config.gradle'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven {
+        url "https://artifacts.alfresco.com/nexus/content/repositories/public/"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // mysql连接驱动
+    compile group: 'mysql', name: 'mysql-connector-java', version: MYSQL_CONNECTOR_VERSION
+    // 页面标签库
+    compile group: 'javax.servlet', name: 'jstl', version: JSTL_VERSION
+    compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: STANDARD_VERSION
+    // log4j日志库
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: LOG4J_CORE_VERSION
+
+    // hibernate整合包的c3p0连接池,包含hibernate的整合包 是否需要c3p0?
+    compile group: 'org.hibernate', name: 'hibernate-c3p0', version: HIBERNATE_C3P0_VERSION
+
+    // struts2包,非核心包,因为包含注解
+    compile group: 'org.apache.struts', name: 'struts2-convention-plugin', version: STRUTS2_VERSION
+    // struts2和spring整合包,包含了spring的基本包,包含了web整合包
+    compile group: 'org.apache.struts', name: 'struts2-spring-plugin', version: STRUTS2_VERSION
+
+    //  基本的spring包
+    compile group: 'org.springframework', name: 'spring-context', version: SPRING_VERSION
+    // spring AOP切面所需包
+    compile group: 'aopalliance', name: 'aopalliance', version: AOPALLIANCE_VERSION
+    compile group: 'org.springframework', name: 'spring-aspects', version: SPRING_VERSION
+    // spring web整合包
+    compile group: 'org.springframework', name: 'spring-web', version: SPRING_VERSION
+    // 事务包,整合hibernate所需
+    compile group: 'org.springframework', name: 'spring-jdbc', version: SPRING_VERSION
+    // spring 的测试包 JDBC包已经依赖整合
+    compile group: 'org.springframework', name: 'spring-tx', version: SPRING_VERSION
+    // spring 整合 hibernate orm操作包
+    compile group: 'org.springframework', name: 'spring-orm', version: SPRING_VERSION
+    // spring Test测试包
+    compile group: 'org.springframework', name: 'spring-test', version: SPRING_VERSION
+}

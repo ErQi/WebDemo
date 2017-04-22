@@ -2,14 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="com.erqi_main" target="1.8" />
+      <module name="com.erqi_test" target="1.8" />
       <module name="HelloWeb_main" target="1.5" />
       <module name="HelloWeb_test" target="1.5" />
       <module name="HibernateDemo_main" target="1.8" />
       <module name="HibernateDemo_test" target="1.8" />
+      <module name="SSHDemo_main" target="1.8" />
+      <module name="SSHDemo_test" target="1.8" />
       <module name="SSHTest_main" target="1.8" />
       <module name="SSHTest_test" target="1.8" />
       <module name="TestGradle_main" target="1.5" />
       <module name="TestGradle_test" target="1.5" />
+      <module name="WebDemo-com.erqi_main" target="1.8" />
+      <module name="WebDemo-com.erqi_main~1" target="1.8" />
+      <module name="WebDemo-com.erqi_test" target="1.8" />
+      <module name="WebDemo-com.erqi_test~1" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
