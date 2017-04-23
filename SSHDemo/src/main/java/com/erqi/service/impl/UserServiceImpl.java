@@ -29,9 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User find(String user_acct) {
         DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
-        criteria.add(Restrictions.eq("user_acct", user_acct));
-        List<User> users = userDao.find(criteria);
-        return users.size() == 0 ? null : users.get(0);
+        return userDao.onFindById(user_acct);
     }
 
     /**
@@ -51,7 +49,7 @@ public class UserServiceImpl implements UserService {
         DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
         criteria.add(Restrictions.eq("user_acct", user.getUser_acct()));
         criteria.add(Restrictions.eq("user_pwd", MD5Utils.md5(user.getUser_pwd())));
-        List<User> users = userDao.find(criteria);
+        List<User> users = userDao.onFindAll(criteria);
         return users.size() == 0 ? null : users.get(0);
     }
 }
