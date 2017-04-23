@@ -57,6 +57,14 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/SSHTest/build/resources/main/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/SSHTest/build/libs/exploded/SSHTest-1.0-SNAPSHOT.war/WEB-INF/classes/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
